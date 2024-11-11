@@ -22,7 +22,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         // Создание нового пользователя
@@ -36,7 +36,7 @@ class UserController extends Controller
         Auth::login($user);
 
         // Перенаправление после успешной регистрации
-        return redirect()->route('/tours'); // Или любой другой маршрут
+        return redirect()->route('tours.index'); // Или любой другой маршрут
     }
 
 
