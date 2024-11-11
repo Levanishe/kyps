@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
@@ -50,21 +51,35 @@ class TourController extends Controller
     }
 
     // Обновление тура
-    public function update(Request $request, Tour $tour)
-    {
-        // Валидация данных
-        $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'price' => 'required|numeric',
-        ]);
+    public function update(Request $request, $id)
+{
+    $tour = Tour::findOrFail($id);
+    
+    // Валидация
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Правило для изображения
+    ]);
 
-        // Обновляем информацию о туре
-        $tour->update($request->all());
-
-        // Перенаправляем на страницу с турами с сообщением об успехе
-        return redirect()->route('tours.index')->with('success', 'Тур успешно обновлен!');
+    // Сохранение изображения
+    if ($request->hasFile('image')) {
+        // Удаление старого изображения, если оно существует
+        if ($tour->image) {
+            Storage::delete($tour->image);
+        }
+        // Сохранение нового изображения
+        $path = $request->file('image')->store('images/tours'); // Сохранение изображения в папку public/images/tours
+        $tour->image = $path; // Сохранение пути к изображению в базе данных
     }
+
+    // Обновление других полей
+    $tour->name = $validated['name'];
+    $tour->description = $validated['description'];
+    $tour->save();
+
+    return redirect()->route('admin.tours.index')->with('success', 'Тур обновлен успешно!');
+}
 
     // Удаление тура
     public function destroy(Tour $tour)
