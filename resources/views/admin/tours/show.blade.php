@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('admin.layouts.layout')
 
 @section('content')
-    <h1>{{ $tour->title }}</h1>
+    <h1>{{ $tour->name }}</h1>
     <p>{{ $tour->description }}</p>
     <p>Цена: {{ $tour->price }}</p>
 

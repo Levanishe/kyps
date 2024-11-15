@@ -26,7 +26,7 @@ class TourController extends Controller
     {
         // Валидация данных
         $request->validate([
-            'title' => 'required|max:255',
+            'name' => 'required|max:255',
             'description' => 'required',
             'price' => 'required|numeric',
         ]);

@@ -23,11 +23,15 @@ use Illuminate\Support\Facades\Route;
 
 
 // Группируем маршруты админки
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/tours', [AdminTourController::class, 'index'])->name('admin.tours.index');
+    Route::get('/tours/create', [AdminTourController::class, 'create'])->name('admin.tours.create'); // Маршрут для создания тура
+    Route::post('/tours', [AdminTourController::class, 'store'])->name('admin.tours.store'); // Маршрут для хранения нового тура
     Route::get('/tours/{id}/edit', [AdminTourController::class, 'edit'])->name('admin.tours.edit');
     Route::put('/tours/{id}', [AdminTourController::class, 'update'])->name('admin.tours.update');
 });
+
+
 
 Route::resource('tours', TourController::class);
 

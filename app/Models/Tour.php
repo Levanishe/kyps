@@ -11,7 +11,7 @@ class Tour extends Model
 
     // Разрешаем массовое назначение для следующих полей
     protected $fillable = [
-        'title',
+        'name',
         'description',
         'price',
     ];

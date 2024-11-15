@@ -20,9 +20,9 @@ class UserController extends Controller
     {
         // Валидация входящих данных
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:55'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
 
         // Создание нового пользователя
@@ -57,7 +57,7 @@ class UserController extends Controller
 
         // Проверка учетных данных
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('dashboard'); // Перенаправление на нужную страницу
+            return redirect()->route('tours.index'); // Перенаправление на нужную страницу
         }
 
         return back()->withErrors([
@@ -69,6 +69,6 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login'); // Перенаправление на страницу входа
+        return redirect()->route('tours.index'); // Перенаправление на страницу входа
     }
 }

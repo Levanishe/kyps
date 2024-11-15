@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->text('description');
+            $table->decimal('price');
             $table->string('image')->nullable();
-            $table->integer('price');
             $table->timestamps();
         });
     }

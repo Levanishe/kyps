@@ -9,21 +9,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ route('tours.index') }}">Туры</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{{ route('tours.index') }}">Список Туров</a></li>
-                <li><a class="nav-link" href="{{ route('login') }}">Вход</a></li>
-                <li><a class="nav-link" href="{{ route('register') }}">Регистрация</a></li>
-        </div>
-    </nav>
+    <div class="navbarr">
+        @include('layouts.navbar') <!-- Подключаем navbar -->
+    </div>
 
-    <div class="container mt-4">
-        @yield('content')
+    <div class="container">
+        @yield('content') <!-- Основной контент страницы -->
+    </div>
+
+    <div class="footer">
+        @include('layouts.footer') <!-- Подключаем footer -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

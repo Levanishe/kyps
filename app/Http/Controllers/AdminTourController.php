@@ -15,6 +15,38 @@ class AdminTourController extends Controller
         return view('admin.tours.index', compact('tours'));
     }
 
+    // Метод для отображения формы создания нового тура
+    public function create()
+    {
+        return view('admin.tours.create'); // Отображаем форму создания
+    }
+
+    // Метод для сохранения нового тура
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ]);
+    
+        $tour = new Tour();
+        $tour->name = $request->name;
+        $tour->description = $request->description;
+        $tour->price = $request->price;
+    
+        // Обработка изображения
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images/tours', 'public'); // Сохранение изображения
+            $tour->image = $imagePath; // Сохранение пути к изображению
+        }
+    
+        $tour->save();
+    
+        return redirect()->route('admin.tours.index')->with('success', 'Тур успешно создан.');
+    }
+
     // Метод для отображения формы редактирования тура
     public function edit($id)
     {
