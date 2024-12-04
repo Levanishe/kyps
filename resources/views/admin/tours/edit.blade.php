@@ -24,11 +24,29 @@
         </div>
 
         <div class="mb-3">
+            <label for="price" class="form-label">Цена</label>
+            <textarea type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required>{{ old('price', $tour->price) }}</textarea>
+            @error('price')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="category_id">Категория:</label>
+            <select name="category_id" class="form-control">
+                <option value="" disabled selected>Выберите категорию</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="image" class="form-label">Изображение</label>
             <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
             @if ($tour->image)
                 <div class="mt-2">
-                    <img src="{{ asset('storage/' . $tour->image) }}" alt="{{ $tour->name }}" style="width: 200px; height: auto;">
+                    <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}" style="width: 100px">
                 </div>
             @endif
             @error('image')

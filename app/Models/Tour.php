@@ -14,5 +14,11 @@ class Tour extends Model
         'name',
         'description',
         'price',
+        'image',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

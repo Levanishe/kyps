@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
     // Метод для отображения формы регистрации
     public function showRegistrationForm()
     {
-        return view('users.register');
+        return view('user.users.register');
     }
 
     public function register(Request $request)
@@ -26,24 +27,22 @@ class UserController extends Controller
         ]);
 
         // Создание нового пользователя
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
+        $user = User::create($request->all());
+
+        // Отправка уведомления о подтверждении email
+        $user->sendEmailVerificationNotification();
 
         // Аутентификация пользователя
         Auth::login($user);
 
         // Перенаправление после успешной регистрации
-        return redirect()->route('tours.index'); // Или любой другой маршрут
+        return redirect()->route('verification.notice'); // Или любой другой маршрут
     }
-
 
     // Метод для отображения формы входа
     public function showLoginForm()
     {
-        return view('users.login');
+        return view('user.users.login');
     }
 
     // Метод для обработки входа
@@ -57,7 +56,17 @@ class UserController extends Controller
 
         // Проверка учетных данных
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('tours.index'); // Перенаправление на нужную страницу
+            $user = Auth::user();
+
+            // Проверка, верифицирован ли email
+            if (!$user->hasVerifiedEmail()) {
+                Auth::logout();
+                throw ValidationException::withMessages([
+                    'email' => 'Вы должны подтвердить свою электронную почту, прежде чем входить.',
+                ]);
+            }
+
+            return redirect()->route('user.tours.index'); // Перенаправление на нужную страницу
         }
 
         return back()->withErrors([
@@ -66,9 +75,9 @@ class UserController extends Controller
     }
 
     // Метод для выхода
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        return redirect()->route('tours.index'); // Перенаправление на страницу входа
+        return redirect()->route('user.tours.index'); // Перенаправление на страницу входа
     }
 }
