@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -19,24 +18,23 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        // Валидация входящих данных
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:55'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed', 'min:3'],
         ]);
 
-        // Создание нового пользователя
-        $user = User::create($request->all());
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']), 
+        ]);
 
-        // Отправка уведомления о подтверждении email
         $user->sendEmailVerificationNotification();
 
-        // Аутентификация пользователя
         Auth::login($user);
 
-        // Перенаправление после успешной регистрации
-        return redirect()->route('verification.notice'); // Или любой другой маршрут
+        return redirect()->route('verification.notice');
     }
 
     // Метод для отображения формы входа
@@ -48,31 +46,32 @@ class UserController extends Controller
     // Метод для обработки входа
     public function login(Request $request)
     {
-        // Валидация входящих данных
         $request->validate([
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+            'remember' => 'boolean',
         ]);
-
+    
+        // Преобразование значения remember в логический тип
+        $remember = $request->has('remember');
+    
         // Проверка учетных данных
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'), $remember)) {
             $user = Auth::user();
-
+    
             // Проверка, верифицирован ли email
             if (!$user->hasVerifiedEmail()) {
                 Auth::logout();
-                throw ValidationException::withMessages([
-                    'email' => 'Вы должны подтвердить свою электронную почту, прежде чем входить.',
-                ]);
+                return view('user.users.register');
             }
-
+    
             return redirect()->route('user.tours.index'); // Перенаправление на нужную страницу
         }
-
+    
         return back()->withErrors([
             'email' => 'Ошибка входа. Пожалуйста, проверьте свои учетные данные.',
         ]);
-    }
+    }  
 
     // Метод для выхода
     public function logout()

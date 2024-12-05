@@ -1,0 +1,9 @@
+    /* Пример стилей для темной темы */
+    .dark-theme {
+      background-color: #121212;
+      color: white;
+    }
+
+    .dark-theme #content {
+      background-color: #1e1e1e;
+    }

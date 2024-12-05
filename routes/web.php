@@ -55,11 +55,11 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 // });
 
-    //Уведомление о проверке электронной почты - Показать страницу верификации:
+    //Показать страницу верификации:
     Route::get('/email/verify', function () {
         return view('user.users.verify-email');
     })->middleware('auth')->name('verification.notice');
-    //Обработчик проверки электронной почты - Обработчик верификации:
+    //Обработчик верификации:
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
         return redirect('/tours');

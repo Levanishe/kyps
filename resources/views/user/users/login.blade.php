@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <h2 class="text-center mb-4" style="font-size: 3rem; font-weight: bold; color: #343a40;">Вход в систему</h2>
-    
+
     <!-- Вывод ошибок валидации -->
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -28,13 +28,13 @@
         </div>
 
         <div class="form-check m-2">
-            <input name="verification" type="checkbox" class="form-check-input" id="verification" style="font-size: 1.2rem;">
-            <label class="form-check-label" for="verification" style="font-size: 1.2rem;">Запомнить меня</label>
+            <input name="remember" type="checkbox" class="form-check-input" id="remember" style="font-size: 1.2rem;">
+            <label class="form-check-label" for="remember" style="font-size: 1.2rem;">Запомнить меня</label>
         </div>
 
         <button type="submit" class="btn btn-primary text-center btn-lg" style="font-size: 1.5rem;">Войти</button>
     </form>
-    
+
     <div class="text-center mt-4">
         <p style="font-size: 1.2rem;">Нет аккаунта? <a href="{{ route('register') }}" class="font-weight-bold">Зарегистрироваться</a></p>
     </div>

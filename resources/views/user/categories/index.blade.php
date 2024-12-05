@@ -15,7 +15,7 @@
             @foreach($categories as $category)
             <tr>
                 <td>
-                    <a href="{{ route('tours.index', ['category_id' => $category->id]) }}">
+                    <a href="{{ route('user.tours.index', ['category_id' => $category->id]) }}">
                         {{ $category->name }}
                     </a>
                 </td>
