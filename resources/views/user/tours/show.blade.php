@@ -1,22 +1,32 @@
 @extends('user.layouts.layout')
 
 @section('content')
-<div class="container">
-    <h1>{{ $tour->name }}</h1>
+<div class="container mt-3">
+    <h1 class="mb-2">{{ $tour->name }}</h1>
 
-    <div class="tour-image">
-        @if($tour->image)
-            <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}" class="img-fluid" style="width: 500px; height: 300px;">
-        @else
-            <p class="text-muted">Нет изображения</p>
-        @endif
+    <div class="card mb-2">
+        <div class="tour-image">
+            @if($tour->image)
+                <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}" class="card-img-top img-fluid" style="max-width: 50%; max-height: 30%;">
+            @else
+                <div class="card-body">
+                    <p class="text-muted">Нет изображения</p>
+                </div>
+            @endif
+        </div>
+        
+        <div class="card-body">
+            
+            
+            <p><strong>Цена:</strong> {{ number_format($tour->price, 0, ',', ' ') }}$</p>
+            <p><strong><a href="{{ route('user.tours.index', $tour) }}">Категория: </a></strong>{{ optional($tour->category)->name ?? 'Категория отсутствует' }}</p>
+            <p><strong>Маршрут:</strong> {{ $tour->route }}</p>
+            <p><strong>Длительность:</strong> {{ $tour->duration }}</p>
+            <h5 class="card-title">Описание:</h5>
+            <p class="card-text">{{ $tour->description }}</p>
+        </div>
     </div>
 
-    <div class="tour-details mt-3">
-        <p><strong>Описание:</strong> {{ $tour->description }}</p>
-        <p><strong>Цена:</strong> {{ $tour->price }}₽</p>
-    </div>
-
-    <a href="{{ route('user.tours.index') }}" class="btn btn-secondary mt-3">Назад к списку</a>
+    <a href="{{ route('user.tours.index') }}" class="btn btn-secondary">Назад к списку</a>
 </div>
 @endsection

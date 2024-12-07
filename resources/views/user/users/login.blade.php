@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-check m-2">
-            <input name="remember" type="checkbox" class="form-check-input" id="remember" style="font-size: 1.2rem;">
+            <input name="remember" type="checkbox" class="form-check-input" id="remember" value="0" style="font-size: 1.2rem;">
             <label class="form-check-label" for="remember" style="font-size: 1.2rem;">Запомнить меня</label>
         </div>
 

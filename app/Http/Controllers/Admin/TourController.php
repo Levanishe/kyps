@@ -24,10 +24,8 @@ class TourController extends Controller
 
     public function create()
     {
-        
-        $tours = Tour::all();
         $categories = Category::all();
-        return view('admin.tours.create', compact('tours', 'categories'));
+        return view('admin.tours.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -37,7 +35,10 @@ class TourController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'category_id' => 'exists:categories,id',
+            'category_id' => 'required|exists:categories,id',
+            'route' => 'required|string|max:255',
+            'duration' => 'required|string|max:255',
+            'dates' => 'required|string', // Можно использовать json, если вы решите хранить массив
         ]);
 
         $tour = new Tour();
@@ -45,6 +46,9 @@ class TourController extends Controller
         $tour->description = $request->description;
         $tour->price = $request->price;
         $tour->category_id = $request->category_id;
+        $tour->route = $request->route;
+        $tour->duration = $request->duration;
+        $tour->dates = $request->dates; // Если вы используете json, вам нужно будет преобразовать его в массив
 
         if ($request->hasFile('image')) { 
             $imageName = time() . '_' . $request->file('image')->getClientOriginalName(); 
@@ -52,6 +56,7 @@ class TourController extends Controller
             $request->file('image')->move(public_path('images/tours'), $imageName); 
             $tour->image = 'images/tours/' . $imageName; 
         }
+
         $tour->save();
 
         return redirect()->route('admin.tours.index')->with('success', 'Тур успешно создан.');
@@ -73,10 +78,18 @@ class TourController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'category_id' => 'exists:categories,id',
+            'category_id' => 'required|exists:categories,id',
+            'route' => 'required|string|max:255',
+            'duration' => 'required|string|max:255',
+            'dates' => 'required|string', // Можно использовать json, если вы решите хранить массив
         ]);
 
         if ($request->hasFile('image')) {
+            // Удаляем старое изображение, если оно есть
+            if ($tour->image) {
+                Storage::delete($tour->image);
+            }
+            
             $imageName = time() . '_' . $request->file('image')->getClientOriginalName(); 
             // Перемещаем изображение в папку public/images/tours 
             $request->file('image')->move(public_path('images/tours'), $imageName);
@@ -87,6 +100,9 @@ class TourController extends Controller
         $tour->description = $request->input('description');
         $tour->price = $request->input('price');
         $tour->category_id = $request->input('category_id');
+        $tour->route = $request->input('route');
+        $tour->duration = $request->input('duration');
+        $tour->dates = $request->input('dates'); // Если вы используете json, вам нужно будет преобразовать его в массив
 
         $tour->save();
 

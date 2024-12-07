@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('route')->nullable();
+            $table->string('duration')->nullable();
+            $table->text('dates')->nullable();
             $table->decimal('price', 10, 0)->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

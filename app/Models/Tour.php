@@ -15,6 +15,9 @@ class Tour extends Model
         'description',
         'price',
         'image',
+        'route',
+        'duration',
+        'dates',
     ];
 
     public function category()

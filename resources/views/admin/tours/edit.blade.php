@@ -25,20 +25,47 @@
 
         <div class="mb-3">
             <label for="price" class="form-label">Цена</label>
-            <textarea type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required>{{ old('price', $tour->price) }}</textarea>
+            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price', $tour->price) }}" required>
             @error('price')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
         <div class="mb-3">
+            <label for="route" class="form-label">Маршрут</label>
+            <input type="text" class="form-control @error('route') is-invalid @enderror" id="route" name="route" value="{{ old('route', $tour->route) }}" required>
+            @error('route')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="duration" class="form-label">Длительность</label>
+            <input type="text" class="form-control @error('duration') is-invalid @enderror" id="duration" name="duration" value="{{ old('duration', $tour->duration) }}" required>
+            @error('duration')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="dates" class="form-label">Даты</label>
+            <input type="text" class="form-control @error('dates') is-invalid @enderror" id="dates" name="dates" value="{{ old('dates', $tour->dates) }}" required>
+            @error('dates')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="category_id">Категория:</label>
-            <select name="category_id" class="form-control">
-                <option value="" disabled selected>Выберите категорию</option>
+            <select name="category_id" class="form-control" required>
+                <option value="" disabled>Выберите категорию</option>
                 @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ $tour->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach
             </select>
+            @error('category_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-3">
