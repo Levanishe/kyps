@@ -6,7 +6,7 @@
     <a class="navbar-brand" href="{{ route('admin.tours.index') }}">Админка-Туры</a>
     @endif
     @endif
-    <button id="theme-toggle" class="btn btn-secondary">Сменить тему</button>
+    <button id="theme-toggle" class="btn btn-primary">Сменить тему</button>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

@@ -15,7 +15,7 @@
         Перед тем как продолжить, пожалуйста, проверьте свою электронную почту на наличие ссылки для подтверждения.
     </p>
     <div class="form-verify text-center">
-        <form method="POST" action="{{ route('verification.send') }}">
+        <form class="form-bb" method="POST" action="{{ route('verification.send') }}">
             @csrf
             <button type="submit" class="btn btn-primary p-3">
                 Отправить письмо повторно

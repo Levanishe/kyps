@@ -1,8 +1,8 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-<div class="container">
-    <h1>Создать новый тур</h1>
+<div class="container" id="content">
+    <h1 class="text-li">Создать новый тур</h1>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -14,7 +14,7 @@
     </div>
     @endif
 
-    <form action="{{ route('admin.tours.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="form-bb" action="{{ route('admin.tours.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -28,13 +28,17 @@
         </div>
 
         <div class="form-group">
-            <label for="price">Цена:</label>
+            <label for="price">Цена в $:</label>
             <input type="number" name="price" class="form-control" required min="0" step="0.01">
         </div>
 
         <div class="form-group">
-            <label for="image">Изображение:</label>
-            <input type="file" name="image" id="image" class="form-control" accept="image/*">
+            <p for="image">Изображение:</p>
+            <label class="custom-file-upload">
+                <input type="file" name="image" id="image" accept="image/*">
+                Выберите файл
+            </label>
+            <div class="file-name" id="file-name">Файл не выбран</div>
         </div>
 
         <div class="form-group">
@@ -64,6 +68,5 @@
 
         <button type="submit" class="btn btn-primary mt-2">Создать тур</button>
     </form>
-
 </div>
 @endsection

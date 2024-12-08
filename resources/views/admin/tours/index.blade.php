@@ -13,8 +13,8 @@
         <a href="{{ route('admin.tours.create') }}" class="btn btn-primary">Добавить новый тур</a>
     </div>
 
-    <div class="table-responsive"> <!-- Оберните таблицу в div с классом table-responsive -->
-        <table class="table table-striped table-bordered">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-dark"> <!-- Добавлен класс table-dark -->
             <thead>
                 <tr>
                     <th>ID</th>
@@ -43,9 +43,11 @@
                     <td>
                         <a href="{{ route('admin.tours.show', $tour) }}">{{ $tour->name }}</a>
                     </td>
-                    <td>{{ optional($tour->category)->name ?? 'Категория отсутствует' }}</td>
+                    <td>
+                        <a href="{{ route('admin.categories.index', $tour) }}">{{ optional($tour->category)->name ?? 'Категория отсутствует' }}</a>
+                    </td>
                     <td>{{ Str::limit($tour->description, 30) }}</td>
-                    <td>{{ number_format($tour->price, 0, ',', ' ') }}$</td> <!-- Форматирование цены -->
+                    <td>{{ number_format($tour->price, 0, ',', ' ') }}$</td>
                     <td>{{ $tour->route }}</td>
                     <td>{{ $tour->duration }}</td>
                     <td>{{ $tour->dates }}</td>

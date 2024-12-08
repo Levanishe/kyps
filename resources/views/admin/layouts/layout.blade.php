@@ -16,7 +16,7 @@
         @include('admin.layouts.navbar') <!-- Подключаем navbar -->
     </div>
 
-    <main class="container mt-2">
+    <main id="content" class="container mt-2">
         @yield('content')
     </main>
 
