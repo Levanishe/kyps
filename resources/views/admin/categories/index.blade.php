@@ -9,7 +9,7 @@
     </div>
 
     <table class="table table-striped table-bordered">
-        <thead class="thead-dark">
+        <thead class="thead">
             <tr>
                 <th>ID</th>
                 <th>Имя</th>

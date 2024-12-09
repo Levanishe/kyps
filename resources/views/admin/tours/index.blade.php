@@ -14,7 +14,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped table-bordered table-dark"> <!-- Добавлен класс table-dark -->
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
