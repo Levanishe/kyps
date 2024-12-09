@@ -1,0 +1,460 @@
+/* navbar.blade */
+/* Тумблер */
+.unique-theme-toggle {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.theme-icon {
+  font-size: 24px;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2; /* Убедитесь, что иконки ниже тумблера */
+}
+
+.sun-icon {
+  left: 10px;
+  opacity: 1;
+}
+
+.moon-icon {
+  right: 10px;
+  opacity: 0;
+}
+
+.unique-toggle-label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  width: 60px; /* Ширина тумблера */
+  height: 30px; /* Высота тумблера */
+  background-color: #ccc; /* Цвет фона тумблера */
+  border-radius: 15px; /* Закругление углов */
+  margin: 0 10px; /* Отступы между иконками и тумблером */
+  transition: background-color 0.3s ease;
+  z-index: 3; /* Увеличиваем z-index, чтобы тумблер был выше */
+}
+
+.unique-toggle-ball {
+  display: inline-block;
+  width: 28px; /* Ширина шарика */
+  height: 28px; /* Высота шарика */
+  background-color: white; /* Цвет шарика */
+  border-radius: 50%; /* Закругление углов для шарика */
+  position: absolute;
+  top: 1px; /* Отступ сверху */
+  left: 1px; /* Отступ слева */
+  transition: left 0.3s ease; /* Плавный переход для перемещения шарика */
+}
+
+input[type="checkbox"] {
+  display: none; /* Скрываем input */
+}
+
+input[type="checkbox"]:checked + .unique-toggle-label {
+  background-color: #f39c12; /* Цвет фона тумблера при включенном состоянии */
+}
+
+input[type="checkbox"]:checked + .unique-toggle-label .unique-toggle-ball {
+  left: 31px; /* Перемещение шарика при включенном состоянии */
+}
+
+input[type="checkbox"]:checked + .unique-toggle-label ~ .moon-icon {
+  opacity: 1; /* Луна становится видимой */
+}
+
+input[type="checkbox"]:checked + .unique-toggle-label ~ .sun-icon {
+  opacity: 0; /* Солнце скрывается */
+}
+
+input[type="checkbox"]:not(:checked) + .unique-toggle-label ~ .moon-icon {
+  opacity: 0; /* Луна скрывается */
+}
+
+input[type="checkbox"]:not(:checked) + .unique-toggle-label ~ .sun-icon {
+  opacity: 1; /* Солнце становится видимым */
+}
+
+
+
+
+
+/* show.blade */
+.show-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.show-image-container img {
+  transition: transform 0.5s ease;
+}
+
+.show-image-container img:hover {
+  transform: scale(1.05);
+}
+
+.show-no-image-placeholder {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  border-radius: 15px;
+}
+
+.show-details {
+  background: #ffffff;
+  border-radius: 15px;
+}
+
+.dark-theme .show-details {
+  background: #343a40;
+  border-radius: 15px;
+}
+
+.show-card-title{
+ color: #000000;
+}
+.dark-theme .show-card-title{
+ color: #ffffff;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.show-image-container {
+  color: black;
+}
+
+.dark-theme .show-card-text {
+  color: white;
+}
+
+.show-info h4 {
+  border-bottom: 2px solid #000000;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.dark-theme .show-info h4 {
+  border-bottom: 2px solid gray;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.show-list-unstyled li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  color: floralwhite;
+}
+
+/* Стили для темной темы */
+.dark-theme {
+  background-color: #121212;
+  /* Цвет фона для темной темы */
+  color: #ffffff;
+  /* Цвет текста для темной темы */
+}
+
+.dark-theme input {
+  background-color: #343a40;
+  /* Цвет input в темной теме */
+  color: #ffffff;
+  /* Цвет текста для input в темной теме */
+  border: 1px solid #555;
+  /* Цвет рамки для input в темной теме */
+}
+
+.dark-theme .table {
+  background-color: #1e1e1e;
+  /* Цвет фона таблицы */
+  color: #ffffff;
+  /* Цвет текста для таблицы */
+}
+
+.dark-theme .btn {
+  background-color: #555;
+  /* Цвет кнопок в темной теме */
+  border: 1px solid #444;
+  /* Темный цвет границы */
+  color: #ffffff;
+  /* Цвет текста кнопок */
+}
+
+.dark-theme .btn:hover {
+  background-color: #666;
+  /* Цвет кнопок при наведении в темной теме */
+}
+
+/* Стили для светлой темы */
+.light-theme {
+  background-color: #ffffff;
+  /* Цвет фона для светлой темы */
+  color: #000000;
+  /* Цвет текста для светлой темы */
+}
+
+.light-theme input {
+  background-color: #f8f9fa;
+  /* Цвет input в светлой теме */
+  color: #000000;
+  /* Цвет текста для input в светлой теме */
+  border: 1px solid #ced4da;
+  /* Цвет рамки для input в светлой теме */
+}
+
+.light-theme .table {
+  background-color: #ffffff;
+  /* Цвет фона таблицы в светлой теме */
+  color: #000000;
+  /* Цвет текста для таблицы в светлой теме */
+}
+
+.light-theme .form-bb {
+  margin-bottom: 5%;
+  border-radius: 3%;
+  padding: 20px;
+  background-color: #ced4da;
+}
+
+.dark-theme .form-bb {
+  margin-bottom: 5%;
+  border-radius: 3%;
+  padding: 20px;
+  background-color: #343a40;
+}
+
+.light-theme li {
+  color: black;
+  /* Цвет (можно изменить на нужный) */
+}
+
+.dark-theme li {
+  color: white;
+  /* Цвет (можно изменить на нужный) */
+}
+
+label {
+  color: black;
+  /* Цвет (можно изменить на нужный) */
+}
+
+.dark-theme label {
+  color: white;
+  /* Цвет (можно изменить на нужный) */
+}
+
+/* Для светлой темы */
+.light-theme input::placeholder {
+  color: #999;
+  /* Цвет плейсхолдера в светлой теме */
+  opacity: 1;
+  /* Убедитесь, что плейсхолдер не полупрозрачный */
+}
+
+/* Для темной темы */
+.dark-theme textarea::placeholder {
+  color: #ccc;
+  /* Цвет плейсхолдера в темной теме */
+  opacity: 1;
+  /* Убедитесь, что плейсхолдер не полупрозрачный */
+}
+
+/* Для светлой темы */
+.light-theme textarea::placeholder {
+  color: #999;
+  /* Цвет плейсхолдера в светлой теме */
+  opacity: 1;
+  /* Убедитесь, что плейсхолдер не полупрозрачный */
+}
+
+/* Для темной темы */
+.dark-theme input::placeholder {
+  color: #ccc;
+  /* Цвет плейсхолдера в темной теме */
+  opacity: 1;
+  /* Убедитесь, что плейсхолдер не полупрозрачный */
+}
+
+/* Стили для ссылок */
+a {
+  text-decoration: none;
+  /* Убираем подчеркивание */
+  color: black;
+  /* Цвет ссылки (можно изменить на нужный) */
+}
+
+a:hover {
+  color: #0056b3;
+  /* Цвет ссылки при наведении (можно изменить) */
+}
+
+.dark-theme a {
+  text-decoration: none;
+  /* Убираем подчеркивание */
+  color: lightgrey;
+  /* Цвет ссылки (можно изменить на нужный) */
+}
+
+.dark-theme a:hover {
+  text-decoration: none;
+  /* Подчеркивание при наведении */
+  color: #ffffff;
+  /* Цвет ссылки при наведении (можно изменить) */
+}
+
+/* Стили для темной темы таблицы */
+.table-dark {
+  background-color: #343a40;
+  /* Цвет фона для таблицы */
+  color: #ffffff;
+  /* Цвет текста для таблицы */
+}
+
+.table-dark th {
+  background-color: #495057;
+  /* Цвет фона для заголовков */
+}
+
+.table-dark tbody tr:hover {
+  background-color: #495057;
+  /* Цвет фона для строки при наведении */
+}
+
+/* Стили для контейнера с таблицей */
+.table-responsive {
+  overflow-x: auto;
+  /* Позволяет горизонтальный скролл, если таблица слишком широка */
+}
+
+/* Стили для скроллбара в темной теме */
+.dark-theme .table-responsive::-webkit-scrollbar {
+  width: 12px;
+  /* Ширина скроллбара */
+}
+
+.dark-theme .table-responsive::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  /* Цвет фона трека скроллбара */
+}
+
+.dark-theme .table-responsive::-webkit-scrollbar-thumb {
+  background: #555;
+  /* Цвет ползунка */
+  border-radius: 10px;
+  /* Закругление углов ползунка */
+}
+
+.dark-theme .table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #777;
+  /* Цвет ползунка при наведении */
+}
+
+/* Стили для скроллбара в светлой теме */
+.light-theme .table-responsive::-webkit-scrollbar {
+  width: 12px;
+  /* Ширина скроллбара */
+}
+
+.light-theme .table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Цвет фона трека скроллбара */
+}
+
+.light-theme .table-responsive::-webkit-scrollbar-thumb {
+  background: #ccc;
+  /* Цвет ползунка */
+  border-radius: 10px;
+  /* Закругление углов ползунка */
+}
+
+.light-theme .table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+  /* Цвет ползунка при наведении */
+}
+
+/* Загрузчик фото */
+.custom-file-upload {
+  display: inline-block;
+  padding: 15px 25px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #6e7fff, #5a5eff);
+  color: white;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-file-upload:hover {
+  background: linear-gradient(135deg, #5a5eff, #6e7fff);
+  transform: translateY(-2px);
+}
+
+.custom-file-upload:before {
+  content: '📁';
+  /* Иконка файла */
+  font-size: 20px;
+}
+
+/* Скрываем стандартный input */
+input[type="file"] {
+  display: none;
+  /* Скрываем стандартный input */
+}
+
+.file-name {
+  margin-top: 1%;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Стили для тёмной темы */
+.dark-theme .custom-file-upload {
+  background: linear-gradient(135deg, #4a4a4a, #333);
+  color: #e0e0e0;
+}
+
+.dark-theme .custom-file-upload:hover {
+  background: linear-gradient(135deg, #333, #4a4a4a);
+}
+
+.dark-theme .file-name {
+  color: #ccc;
+}
+
+/* Дополнительные стили для тёмной темы */
+.dark-theme {
+  background-color: #121212;
+  /* Фон для тёмной темы */
+  color: #e0e0e0;
+  /* Цвет текста */
+}
+
+/* Пример стилей для форм в тёмной теме */
+.dark-theme .form-control {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+.dark-theme .form-control:focus {
+  border-color: #6e7fff;
+  /* Цвет фокуса для элементов формы */
+  box-shadow: 0 0 5px rgba(110, 127, 255, 0.5);
+}
+
+.dark-theme .alert {
+  background-color: #333;
+  color: #e0e0e0;
+}

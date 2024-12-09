@@ -1,3 +1,4 @@
+<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ route('user.tours.index') }}">Туры</a>
     @if(Auth::check())
@@ -38,4 +39,5 @@
     </div>
 </nav>
 
+<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
 

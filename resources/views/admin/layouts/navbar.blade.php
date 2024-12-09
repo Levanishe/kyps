@@ -6,7 +6,16 @@
     <a class="navbar-brand" href="{{ route('admin.tours.index') }}">Админка-Туры</a>
     @endif
     @endif
-    <button id="theme-toggle" class="btn btn-primary">Сменить тему</button>
+    <div class="unique-theme-toggle">
+    <span class="theme-icon sun-icon">☀️</span>
+    <input type="checkbox" id="theme-toggle" class="unique-theme-switch" />
+    <label for="theme-toggle" class="unique-toggle-label">
+        <span class="unique-toggle-ball"></span>
+    </label>
+    <span class="theme-icon moon-icon">🌙</span>
+</div>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,7 +27,6 @@
             </li>
 
             @if(Auth::check())
-            <!-- Если пользователь авторизован -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -29,7 +37,6 @@
                 </form>
             </li>
             @else
-            <!-- Если пользователь не авторизован -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">Вход</a>
             </li>
