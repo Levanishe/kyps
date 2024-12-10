@@ -16,28 +16,42 @@
                 <a class="nav-link" href="{{ route('user.categories.index') }}">Список Категорий</a>
             </li>
             @if(Auth::check())
-                <!-- Если пользователь авторизован -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}" 
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                       Выход
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
+            <!-- Если пользователь авторизован -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Выход
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+            @if(Auth::check() && Auth::user()->hasVerifiedEmail())
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.users.edit') }}">
+                    {{ Auth::user()->name }}
+                </a>
+            </li>
             @else
-                <!-- Если пользователь не авторизован -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Вход</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('verification.notice') }}">
+                    Верифицироваться
+                </a>
+            </li>
+            
+            @endif
+
+            @else
+            <!-- Если пользователь не авторизован -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Вход</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+            </li>
             @endif
         </ul>
     </div>
 </nav>
 
 <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
-

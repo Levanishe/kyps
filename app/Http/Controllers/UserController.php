@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -10,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class UserController extends Controller
 {
-    // Метод для отображения формы регистрации
     public function showRegistrationForm()
     {
         return view('user.users.register');
@@ -36,9 +35,7 @@ class UserController extends Controller
         try {
             $user->sendEmailVerificationNotification();
         } catch (Exception $e) {
-            // Логируем ошибку или обрабатываем ее
             Log::error('Ошибка отправки уведомления о верификации: ' . $e->getMessage());
-            // Вы можете также вернуть сообщение пользователю, если это необходимо
         }
 
         Auth::login($user);
@@ -46,13 +43,11 @@ class UserController extends Controller
         return redirect()->route('verification.notice');
     }
 
-    // Метод для отображения формы входа
     public function showLoginForm()
     {
         return view('user.users.login');
     }
 
-    // Метод для обработки входа
     public function login(Request $request)
     {
         $request->validate([
@@ -61,19 +56,16 @@ class UserController extends Controller
             'remember' => 'boolean',
         ]);
 
-        // Получение значения remember из запроса
         $remember = $request->has('remember');
 
-        // Проверка учетных данных
         if (Auth::attempt($request->only('email', 'password'), $remember)) {
             $user = Auth::user();
 
-            // Проверка, верифицирован ли email
             if (!$user->hasVerifiedEmail()) {
                 return redirect()->route('verification.notice');
             }
 
-            return redirect()->route('user.tours.index'); // Перенаправление на нужную страницу
+            return redirect()->route('user.tours.index');
         }
 
         return back()->withErrors([
@@ -81,10 +73,41 @@ class UserController extends Controller
         ]);
     }
 
-    // Метод для выхода
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('user.tours.index'); // Перенаправление на страницу входа
+        return redirect()->route('user.tours.index');
+    }
+
+    public function edit()
+    {
+        return view('user.users.edit', ['user' => Auth::user()]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
+            'password' => 'nullable|string|confirmed',
+        ]);
+
+        $user = Auth::user();
+        $user->name = $request->name;
+
+        // Если почта изменена, установите email_verified_at в null
+        if ($request->email !== $user->email) {
+            $user->email = $request->email;
+            $user->email_verified_at = null; // Установите в null для проверки новой почты
+            $user->sendEmailVerificationNotification(); // Отправьте уведомление о верификации
+        }
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('user.users.edit')->with('success', 'Данные успешно обновлены.');
     }
 }

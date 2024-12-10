@@ -24,6 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.tours.index') ? 'active' : '' }}" href="{{ route('admin.tours.index') }}">Список Туров</a>
                 <a class="nav-link {{ request()->routeIs('admin.categories.index') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">Список Категорий</a>
+                <a class="nav-link {{ request()->routeIs('admin.users.index') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Список Пользователей</a>
             </li>
 
             @if(Auth::check())

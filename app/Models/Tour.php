@@ -18,6 +18,7 @@ class Tour extends Model
         'route',
         'duration',
         'dates',
+        'category_id',
     ];
 
     public function category()

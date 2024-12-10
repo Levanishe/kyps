@@ -20,5 +20,11 @@ class Users extends Seeder
            'password'=>Hash::make('admin'),
            'is_admin' =>'1',
         ]);
+        DB::table('users')->insert([
+           'name'=> 'user',
+           'email'=>'user@gmail.com',
+           'password'=>Hash::make('user'),
+           'is_admin' =>'0',
+        ]);
     }
 }

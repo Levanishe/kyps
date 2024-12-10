@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="price">Цена в $:</label>
-            <input type="number" name="price" class="form-control" required min="0" step="0.01">
+            <input type="number" name="price" class="form-control" required min="0">
         </div>
         <div class="form-group">
             <label for="image">Изображение:</label>
@@ -37,7 +37,7 @@
         </div>
         <div class="form-group">
             <label for="category_id">Категория:</label>
-            <select name="category_id" class="form-control" required>
+            <select name="category_id" class="form-control">
                 <option value="" disabled selected>Выберите категорию</option>
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>

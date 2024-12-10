@@ -22,6 +22,6 @@ class AdminMiddleware
         }
 
         // Если пользователь не администратор, перенаправляем или возвращаем ошибку
-        return redirect()->route('tours.index')->with('error', 'У вас нет доступа к этой странице.');
+        return redirect()->route('user.tours.index')->with('error', 'У вас нет доступа к этой странице.');
     }
 }

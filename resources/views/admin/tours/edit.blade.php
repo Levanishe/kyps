@@ -57,7 +57,7 @@
 
         <div class="mb-3">
             <label for="category_id">Категория:</label>
-            <select name="category_id" class="form-control" required>
+            <select name="category_id" class="form-control" >
                 <option value="" disabled>Выберите категорию</option>
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}" {{ $tour->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
