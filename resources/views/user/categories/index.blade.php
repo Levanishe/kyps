@@ -19,9 +19,9 @@
                         {{ $category->name }}
                     </a>
                 </td>
-                <td>
-                    @if($category->image) <!-- Проверяем, есть ли изображение -->
-                    <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" style="width: 100px; height: 100px;">
+                <td style="width: 50%;">
+                    @if($category->image)
+                    <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" style="width: 100%; height: 20vw; object-fit: cover;">
                     @else
                     Нет изображения
                     @endif

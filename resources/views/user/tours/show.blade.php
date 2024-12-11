@@ -7,17 +7,17 @@
     <div class="card mb-2">
         <div class="tour-image">
             @if($tour->image)
-                <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}" class="card-img-top img-fluid" style="max-width: 50%; max-height: 30%;">
+            <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}" class="card-img-top img-fluid" style="object-fit: cover;max-width: 100%; max-height: 600px;">
             @else
-                <div class="card-body">
-                    <p class="text-muted">Нет изображения</p>
-                </div>
+            <div class="card-body">
+                <p class="text-muted">Нет изображения</p>
+            </div>
             @endif
         </div>
-        
+
         <div class="card-body">
-            
-            
+
+
             <p><strong>Цена:</strong> {{ number_format($tour->price, 0, ',', ' ') }}$</p>
             <p><strong><a href="{{ route('user.tours.index', $tour) }}">Категория: </a></strong>{{ optional($tour->category)->name ?? 'Категория отсутствует' }}</p>
             <p><strong>Маршрут:</strong> {{ $tour->route }}</p>

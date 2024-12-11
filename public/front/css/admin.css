@@ -10,31 +10,35 @@
   font-size: 24px;
   transition: opacity 0.3s ease;
   position: absolute;
-  top: 50%;
+  top: 49%;
   transform: translateY(-50%);
   z-index: 2;
   /* Убедитесь, что иконки ниже тумблера */
 }
 
 .sun-icon {
-  left: 10px;
-  opacity: 1;
+  right: 8px;
+  /* opacity: 1; */
 }
 
 .moon-icon {
-  right: 10px;
-  opacity: 0;
+  left: 8px;
+  /* opacity: 0; */
 }
 
 .unique-toggle-label {
+  /* border: 2px solid wheat; */
+  border-radius: 55%;
+  top: 2px;
   display: inline-block;
   cursor: pointer;
   position: relative;
   width: 60px;
   /* Ширина тумблера */
-  height: 30px;
+  height: 35px;
   /* Высота тумблера */
-  background-color: #ccc;
+  /* background-color: #ccc; */
+  background-color: transparent;
   /* Цвет фона тумблера */
   border-radius: 15px;
   /* Закругление углов */
@@ -51,7 +55,7 @@
   /* Ширина шарика */
   height: 28px;
   /* Высота шарика */
-  background-color: white;
+  background-color: #444;
   /* Цвет шарика */
   border-radius: 50%;
   /* Закругление углов для шарика */
@@ -70,32 +74,34 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked+.unique-toggle-label {
-  background-color: #f39c12;
+  /* background-color: #f39c12; */
+  background-color: transparent;
   /* Цвет фона тумблера при включенном состоянии */
 }
 
 input[type="checkbox"]:checked+.unique-toggle-label .unique-toggle-ball {
   left: 31px;
+  background-color: #ffffff;
   /* Перемещение шарика при включенном состоянии */
 }
 
 input[type="checkbox"]:checked+.unique-toggle-label~.moon-icon {
-  opacity: 1;
+  /* opacity: 1; */
   /* Луна становится видимой */
 }
 
 input[type="checkbox"]:checked+.unique-toggle-label~.sun-icon {
-  opacity: 0;
+  /* opacity: 0; */
   /* Солнце скрывается */
 }
 
 input[type="checkbox"]:not(:checked)+.unique-toggle-label~.moon-icon {
-  opacity: 0;
+  /* opacity: 0; */
   /* Луна скрывается */
 }
 
 input[type="checkbox"]:not(:checked)+.unique-toggle-label~.sun-icon {
-  opacity: 1;
+  /* opacity: 1; */
   /* Солнце становится видимым */
 }
 

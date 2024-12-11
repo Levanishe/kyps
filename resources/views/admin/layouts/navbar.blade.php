@@ -7,13 +7,13 @@
     @endif
     @endif
     <div class="unique-theme-toggle">
-    <span class="theme-icon sun-icon">☀️</span>
-    <input type="checkbox" id="theme-toggle" class="unique-theme-switch" />
-    <label for="theme-toggle" class="unique-toggle-label">
-        <span class="unique-toggle-ball"></span>
-    </label>
-    <span class="theme-icon moon-icon">🌙</span>
-</div>
+        <span class="theme-icon moon-icon">🌙</span>
+        <input type="checkbox" id="theme-toggle" class="unique-theme-switch" />
+        <label for="theme-toggle" class="unique-toggle-label">
+            <span class="unique-toggle-ball"></span>
+        </label>
+        <span class="theme-icon sun-icon">☀️</span>
+    </div>
 
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
