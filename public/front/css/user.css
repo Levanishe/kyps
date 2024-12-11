@@ -11,13 +11,14 @@ html {
   color: white;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #444;  color: white;
+.content{
+  margin-bottom: 100%;
 }
 
-.footer a {
-
+.footer {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  background-color: #444;  
+  color: white;
 }

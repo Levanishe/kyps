@@ -1,7 +1,7 @@
 @extends('user.layouts.layout')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-2">
     <h1 class="mb-4">Категории</h1>
 
     <table class="table table-striped table-bordered">

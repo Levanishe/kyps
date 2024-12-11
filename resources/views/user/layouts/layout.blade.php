@@ -15,7 +15,7 @@
         @include('user.layouts.navbar')
     </div>
 
-    <div class="content">
+    <div class="content mb-5">
         @yield('content')
     </div>
 

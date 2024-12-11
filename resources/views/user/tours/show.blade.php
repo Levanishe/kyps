@@ -1,7 +1,7 @@
 @extends('user.layouts.layout')
 
 @section('content')
-<div class="container mt-3">
+<div class="container mt-3 mb-5">
     <h1 class="mb-2">{{ $tour->name }}</h1>
 
     <div class="card mb-2">
@@ -27,6 +27,6 @@
         </div>
     </div>
 
-    <a href="{{ route('user.tours.index') }}" class="btn btn-secondary">Назад к списку</a>
+    <a href="{{ route('user.tours.index') }}" class="btn btn-secondary mb-3">Назад к списку</a>
 </div>
 @endsection
