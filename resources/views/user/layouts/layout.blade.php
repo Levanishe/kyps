@@ -7,7 +7,7 @@
     <title>Туры</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('front/css/user.css')}}">
-    <link rel="stylesheet" href="{{asset('front/css/snow.css')}}">
+    <link rel="stylesheet" href="{{asset('front/snowFlakes/snow.css')}}">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('front/js/app.js')}}"></script>
-    <script src="{{asset('front/js/snow.js')}}"></script>
+    <script src="{{asset('front/snowFlakes/snow.js')}}"></script>
     <script> new Snow(); </script>
 </body>
 
