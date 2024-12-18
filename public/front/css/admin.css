@@ -1,4 +1,10 @@
 /* navbar.blade */
+
+.navbarr {
+  background-color: #444;
+}
+
+
 /* Тумблер */
 .unique-theme-toggle {
   display: flex;

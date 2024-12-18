@@ -15,18 +15,22 @@
         <span class="theme-icon sun-icon">☀️</span>
     </div>
 
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mx-auto">
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.tours.index') ? 'active' : '' }}" href="{{ route('admin.tours.index') }}">Список Туров</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.categories.index') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">Список Категорий</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.users.index') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Список Пользователей</a>
             </li>
-
+        </ul>
+        <ul class="navbar-nav ml-auto">
             @if(Auth::check())
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"

@@ -1,4 +1,4 @@
-<!-- <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet"> -->
+<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <nav class="navbar navbar-expand-lg" >
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('user.tours.index') }}"> 
@@ -54,5 +54,4 @@
     </div>
 </nav>
 
-
-<!-- <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
