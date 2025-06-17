@@ -1,4 +1,9 @@
 /* navbar.blade */
+
+.navbarr {
+  background-color: #444;
+}
+
 /* Тумблер */
 .unique-theme-toggle {
   display: flex;
@@ -68,9 +73,9 @@
   /* Плавный переход для перемещения шарика */
 }
 
-input[type="checkbox"] {
-  display: none;
-  /* Скрываем input */
+/* Скрываем input только для кастомного тумблера темы */
+.unique-theme-toggle input[type="checkbox"] {
+    display: none;
 }
 
 input[type="checkbox"]:checked+.unique-toggle-label {

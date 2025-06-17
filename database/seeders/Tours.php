@@ -23,7 +23,7 @@ class Tours extends Seeder
                 'duration' => '5 дней',
                 'dates' => '2025-05-01, 2025-06-15, 2025-07-20',
                 'price' => 3000,
-                'image' => 'images/tours/defauit/Тбилиси.png',
+                'image' => 'images/tours/defauit/Мцхета - Кахетия.png',
                 'category_id' => $categories['Город']->id,
             ],
             [
@@ -33,7 +33,7 @@ class Tours extends Seeder
                 'duration' => '4 дня',
                 'dates' => '2025-05-10, 2025-06-20',
                 'price' => 2500,
-                'image' => 'images/tours/defauit/Горы.png',
+                'image' => 'images/tours/defauit/Степантьминда (Казбеги).png',
                 'category_id' => $categories['Горы']->id,
             ],
             [
@@ -47,13 +47,13 @@ class Tours extends Seeder
                 'category_id' => $categories['Море']->id,
             ],
             [
-                'name' => 'Тур по деревням Грузии',
-                'description' => 'Узнайте о традиционной грузинской культуре, посетив живописные деревни. Попробуйте домашнюю еду и познакомьтесь с местными жителями.',
-                'route' => 'Тбилиси - Сигнахи - Мцхета',
+                'name' => 'Тур по Сванетии: от Местии до Ушгули',
+                'description' => 'Узнайте о традиционной грузинской культуре, посетив высокогорное село в Грузии, в регионе Сванетия. Это одно из самых высоких постоянно населенных мест в Европе и объект Всемирного наследия ЮНЕСКО.',
+                'route' => 'от Местии до Ушгули',
                 'duration' => '6 дней',
                 'dates' => '2025-05-15, 2025-06-25',
                 'price' => 3500,
-                'image' => 'images/tours/defauit/Деревня.png',
+                'image' => 'images/tours/defauit/Ушгули.png',
                 'category_id' => $categories['Деревня']->id,
             ],
             [
@@ -67,13 +67,13 @@ class Tours extends Seeder
                 'category_id' => $categories['Город']->id,
             ],
             [
-                'name' => 'Горный тур по Сванетии',
-                'description' => 'Погрузитесь в красоту горной Сванетии. Пешие прогулки, восхождения и захватывающие виды ждут вас.',
-                'route' => 'Тбилиси - Местия - Ушгули',
+                'name' => 'Горный тур',
+                'description' => 'Погрузитесь в красоту горной Грузии. Популярный вариант с легкой доступностью и красивыми видами.',
+                'route' => 'Тбилиси - Казбеги - Гудаури - Ананури',
                 'duration' => '8 дней',
                 'dates' => '2025-07-01, 2025-08-10',
                 'price' => 5000,
-                'image' => 'images/tours/defauit/Горы.png',
+                'image' => 'images/tours/defauit/Казбеги - Гудаури - Ананури.png',
                 'category_id' => $categories['Горы']->id,
             ],
             [

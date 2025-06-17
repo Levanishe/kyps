@@ -15,8 +15,11 @@ class DatabaseSeeder extends Seeder
         $this->call(Users::class);
         $this->call(Categories::class);
         $this->call(Tours::class);
+        $this->call(EventSettingsSeeder::class);
     }
 }
+
+//php artisan migrate --seed
 
 //php artisan make:seed Name
 //php artisan db:seed

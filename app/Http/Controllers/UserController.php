@@ -13,6 +13,11 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class UserController extends Controller
 {
+    public function useragreement()
+    {
+        return view('user.users.useragreement');
+    }
+
     public function showRegistrationForm()
     {
         return view('user.users.register');

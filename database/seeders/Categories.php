@@ -12,7 +12,6 @@ class Categories extends Seeder
      */
     public function run(): void
     {
-        // Пример данных для категорий
         $categories = [
             [
                 'name' => 'Город',
@@ -32,7 +31,6 @@ class Categories extends Seeder
             ],
         ];
 
-        // Вставка данных в таблицу categories
         DB::table('categories')->insert($categories);
     }
 }

@@ -39,7 +39,7 @@
 
         <div class="form-check m-2">
             <input name="verification" type="checkbox" class="form-check-input" id="verification" style="font-size: 1.2rem;" required>
-            <label class="form-check-label" for="verification" style="font-size: 1.2rem;">Вы согласны с условиями использования</label>
+            <label class="form-check-label" for="verification" style="font-size: 1.2rem;">Вы согласны с <a href="{{ route('useragreement') }}">условиями</a> использования</label>
         </div>
 
         <button type="submit" class="btn btn-primary text-center btn-lg">Зарегистрироваться</button>
